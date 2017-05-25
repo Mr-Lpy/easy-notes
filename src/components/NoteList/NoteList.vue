@@ -15,21 +15,28 @@
     </div>
     <div class="container">
       <div class="list-group">
-        <a v-for="note in filteredNotes" class="list-group-item" href="#" :class="{active:activeNote === note}" @click="updateActiveNote(note)">
-          <h4 class="list-group-item-heading">{{note.title.trim().substring(0,30)}}</h4>
-        </a>
+        <transition-group name="el-zoom-in-top" tag="ul">
+          <a v-for="note in filteredNotes" class="list-group-item" href="#" :class="{active:activeNote === note}" @click="updateActiveNote(note)" :key="note">
+            <h4 class="list-group-item-heading">{{note.title.trim().substring(0,30)}}</h4>
+          </a>
+        </transition-group>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+    import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
   export default {
       data(){
           return {
               show: 'all'
           };
       },
+      components: {
+          'el-collpase-transition' : CollapseTransition
+      },
+
     computed: {
       activeNote() {
         return this.$store.getters.getActive;
