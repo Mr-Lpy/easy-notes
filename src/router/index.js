@@ -3,19 +3,25 @@
  */
 import Vue from 'vue';
 import Router from 'vue-router';
-import App from '../App';
+
+import Login from '../components/Login/Login.vue';
+import Main from '../components/Main/Main.vue';
 
 Vue.use(Router);
 
-export default new Router ({
-  routes: [
-    {
-      path: '/index',
-      component: App
-    },
-    {
-      path: '*',
-      redirect: '/index'
-    }
-  ]
+export default new Router({
+    routes: [
+        {
+            path: '/Login',
+            component: Login
+        },
+        {
+            path: '/Main',
+            component: Main
+        },
+        {
+            path: '*',
+            redirect: '/Login'
+        }
+    ]
 });
