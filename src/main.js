@@ -20,6 +20,6 @@ Vue.config.productionTip = false;
 // })
 
 const app = new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount('#app');
