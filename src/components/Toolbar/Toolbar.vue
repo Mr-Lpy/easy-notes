@@ -1,8 +1,9 @@
 <template>
     <div id="toolbar">
-        <i class="glyphicon logo">
-            <Head></Head>
-        </i>
+        <div class="head-wrapper">
+            <easy-head></easy-head>
+        </div>
+
         <i @click="addNote" class="glyphicon glyphicon-plus"></i>
         <i @click="toggleFavorite" class="glyphicon glyphicon-star" :class="{starred: activeNote.favorite}"></i>
         <i @click="deleteNote" class="glyphicon glyphicon-remove"></i>
@@ -13,7 +14,7 @@
     import Head from '../Common/Head.vue';
     export default {
         components: {
-            Head
+            'easy-head': Head
         },
         computed: {
             activeNote() {
@@ -39,7 +40,7 @@
 </script>
 
 <style>
-    .head {
-        border-radius: 50%;
+    .head-wrapper {
+        margin-bottom: 40px;
     }
 </style>
