@@ -5,8 +5,12 @@ import App from './App'
 import router from './router';
 import './assets/css/styles.css';
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
 
-Vue.config.productionTip = false
+
+Vue.use(ElementUI);
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 // new Vue({
@@ -16,6 +20,6 @@ Vue.config.productionTip = false
 // })
 
 const app = new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount('#app');

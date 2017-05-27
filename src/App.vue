@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Toolbar></Toolbar>
-    <note-list></note-list>
-    <Editor></Editor>
+    <!--<Toolbar></Toolbar>-->
+    <!--<note-list></note-list>-->
+    <!--<Editor></Editor>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -16,9 +17,9 @@ import Editor from './components/Editor/Editor';
 export default {
   name: 'app',
   components: {
-    Toolbar,
-    NoteList,
-    Editor
+//    Toolbar,
+//    NoteList,
+//    Editor
   },
   store
 }
