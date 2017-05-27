@@ -55,7 +55,6 @@
         width: 280px;
         height: 330px;
         background-color: #e3f0f7;
-        color: #30414d;
         box-shadow: 0.3px 0.3px 18px #777777;
         border-radius: 4px;
     }
