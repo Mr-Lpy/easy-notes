@@ -9,7 +9,7 @@
                 <el-input placeholder="请输入密码" v-model="password"></el-input>
             </div>
             <div class="btn-wrapper">
-                <el-button type="primary" class="btn" @click="login">登录</el-button>
+                <el-button type="primary" class="btn" @click="login">登  录</el-button>
             </div>
         </div>
     </div>
@@ -55,7 +55,6 @@
         width: 280px;
         height: 330px;
         background-color: #e3f0f7;
-        color: #30414d;
         box-shadow: 0.3px 0.3px 18px #777777;
         border-radius: 4px;
     }
