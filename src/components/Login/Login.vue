@@ -9,7 +9,7 @@
                 <el-input placeholder="请输入密码" v-model="password"></el-input>
             </div>
             <div class="btn-wrapper">
-                <el-button type="primary" class="btn" @click="login">登  录</el-button>
+                <el-button type="primary" class="btn" @click="login" v-loading.fullscreen.lock="fullscreenLoading" :element-loading-text="loadingText">登  录</el-button>
             </div>
         </div>
     </div>
@@ -24,13 +24,19 @@
         data() {
             return {
                 username: '',
-                password: ''
+                password: '',
+                fullscreenLoading: false,
+                loadingText: '登录中...'
             };
         },
         methods: {
             login() {
                 console.log('in login');
-                this.$router.push({path: 'Main'});
+                this.fullscreenLoading = true;
+                setTimeout(() => {
+                    this.fullscreenLoading = false;
+                    this.$router.push({path: 'Main'});
+                },3000);
             }
         }
     }
