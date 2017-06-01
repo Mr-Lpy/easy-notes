@@ -26,7 +26,8 @@
                 username: '',
                 password: '',
                 fullscreenLoading: false,
-                loadingText: '登录中...'
+                loadingText: '登录中...',
+                users: []
             };
         },
         methods: {
@@ -35,9 +36,28 @@
                 this.fullscreenLoading = true;
                 setTimeout(() => {
                     this.fullscreenLoading = false;
-                    this.$router.push({path: 'Main'});
+                    this.check()
+
                 },3000);
+            },
+            check() {
+                this.users.forEach((v, i, a) => {
+                    console.log(v.name === this.username);
+                    if (v.name === this.username && v.password === this.password) {
+                        this.$router.push({path: 'Main'});
+                    }
+                });
             }
+        },
+        created() {
+            console.log('in login created');
+            this.$http.get('/api/user').then((response) => {
+                response = response.body;
+                if (response.errno === 0) {
+                    this.users = response.data;
+                    console.log(this.users);
+                }
+            });
         }
     }
 </script>
