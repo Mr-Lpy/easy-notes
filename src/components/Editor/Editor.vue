@@ -1,9 +1,13 @@
 <template>
   <div id="note-editor">
-    <input v-show="isShow" type="text" name="title" :value="activeNote.title" v-model="note.title" @input="editNote"
-           class="title form-control" placeholder="请输入标题">
-    <textarea v-show="isShow" @input="editNote" class="form-control" :value="activeNote.text" v-model="note.text"
-              placeholder="请输入内容"></textarea>
+    <div class="edit-area" v-show="isShow">
+      <input type="text" name="title" :value="activeNote.title" v-model="note.title" @input="editNote"
+             class="title form-control" placeholder="请输入标题">
+      <div class="edit-tool-area">工具区</div>
+      <textarea @input="editNote" class="form-control" :value="activeNote.text" v-model="note.text"
+                placeholder="请输入内容"></textarea>
+    </div>
+
   </div>
 </template>
 
@@ -33,5 +37,18 @@
 </script>
 
 <style>
+  .edit-area {
+    height: 100%;
+  }
 
+  .edit-area textarea {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .edit-area .edit-tool-area {
+    height: 30px;
+    background-color: #f5f5f5;
+  }
 </style>

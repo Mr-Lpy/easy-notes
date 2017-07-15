@@ -9,7 +9,7 @@
                 <el-input placeholder="请输入密码" v-model="password"></el-input>
             </div>
             <div class="btn-wrapper">
-                <el-button type="primary" class="btn" @click="login">登  录</el-button>
+                <el-button type="primary" class="btn" @click="login" v-loading.fullscreen.lock="fullscreenLoading" :element-loading-text="loadingText">登  录</el-button>
             </div>
         </div>
     </div>
@@ -24,14 +24,40 @@
         data() {
             return {
                 username: '',
-                password: ''
+                password: '',
+                fullscreenLoading: false,
+                loadingText: '登录中...',
+                users: []
             };
         },
         methods: {
             login() {
                 console.log('in login');
-                this.$router.push({path: 'Main'});
+                this.fullscreenLoading = true;
+                setTimeout(() => {
+                    this.fullscreenLoading = false;
+                    this.check()
+
+                },3000);
+            },
+            check() {
+                this.users.forEach((v, i, a) => {
+                    console.log(v.name === this.username);
+                    if (v.name === this.username && v.password === this.password) {
+                        this.$router.push({path: 'Main'});
+                    }
+                });
             }
+        },
+        created() {
+            console.log('in login created');
+            this.$http.get('/api/user').then((response) => {
+                response = response.body;
+                if (response.errno === 0) {
+                    this.users = response.data;
+                    console.log(this.users);
+                }
+            });
         }
     }
 </script>
