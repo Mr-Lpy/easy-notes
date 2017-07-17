@@ -40,7 +40,7 @@
   .edit-area {
     height: 100%;
   }
-
+  
   .edit-area textarea {
     height: 100%;
     border: 0;

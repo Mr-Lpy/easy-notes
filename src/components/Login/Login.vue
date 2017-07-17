@@ -5,11 +5,11 @@
                 <easy-head vwidth="90px" vheight="90px"></easy-head>
             </div>
             <div class="edit-form">
-                <el-input placeholder="请输入用户名" v-model="username"></el-input>
-                <el-input placeholder="请输入密码" v-model="password"></el-input>
+                <b-input placeholder="请输入用户名" v-model="username"></b-input>
+                <b-input placeholder="请输入密码" type="password" password-reveal v-model="password"></b-input>
             </div>
             <div class="btn-wrapper">
-                <el-button type="primary" class="btn" @click="login" v-loading.fullscreen.lock="fullscreenLoading" :element-loading-text="loadingText">登  录</el-button>
+                <a class="button btn is-info" :class="{'is-loading':fullscreenLoading}" @click="login">登   录</a>
             </div>
         </div>
     </div>
@@ -41,6 +41,7 @@
                 },3000);
             },
             check() {
+                console.log(this.password)
                 this.users.forEach((v, i, a) => {
                     console.log(v.name === this.username);
                     if (v.name === this.username && v.password === this.password) {
